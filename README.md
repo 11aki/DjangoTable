@@ -14,8 +14,9 @@ How to run locally:
   ```
   or 
 activate your virtualenv.
-run: pip install -r requirements.txt in your shell.
+run: 
 ```
+pip install -r requirements.txt
 cd project/project
 python3 manage.py runserver
 ```
