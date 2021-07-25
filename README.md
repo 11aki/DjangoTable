@@ -2,6 +2,8 @@
 Basic Django table with login features
 
 
+
+
 How to run locally:
   
   ```
@@ -10,6 +12,13 @@ How to run locally:
   cd project
   python3 manage.py runserver
   ```
+  or 
+activate your virtualenv.
+run: pip install -r requirements.txt in your shell.
+```
+cd project/project
+python3 manage.py runserver
+```
 Or go to the link:
   aki.network
 
