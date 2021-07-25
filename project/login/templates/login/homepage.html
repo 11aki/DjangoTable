@@ -1,0 +1,109 @@
+{% extends 'login/main.html' %}
+{% block content %}
+
+
+<br>
+<!--Render movie table-->
+<div class="tableclass">
+    <table class="table">
+        <thead class="table-dark">
+            <tr>
+                <th>Title</th>
+                <th>Genre</th>
+                <th>Release Date</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {%for item in all%}
+                {%if usr == item.user%}
+                <tr>
+                    <td>{{item.name}}</td>
+                    <td>{{item.genre}}</td>
+                    <td>{{item.release_date}}</td>
+                    <td><a class="btn btn-sm btn-danger" href="{% url 'updateMovie' item.id%}" >Update</a></td>
+                    <td><a class="btn btn-sm btn-danger" href="{% url 'deleteMovie' item.id%}" >Delete</a></td>
+                </tr>
+                {%endif%}
+            {%endfor%}
+        </tbody>
+      </table>
+</div>
+
+
+<!--add a movie-->
+<div class="inputMovie">
+<form action="" method="POST">
+    {%csrf_token%}
+    <h3>Add a Movie</h3>
+    <input type="hidden" name="user" value="username" maxlength="200" required id="id_user">
+    <div class="row g-3">
+        <div class="col">
+            {{form.name.label}}
+            {{form.name}}
+        </div>
+        <div class="col">
+            {{form.genre.label}}
+            {{form.genre}}
+        </div>
+        <div class="col">
+            <label for="">Release Date (mm/dd/yyyy)</label>
+            {{form.release_date}}
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary" value="Delete MOvie">Submit</button>
+</form>
+</div>
+
+
+<!--add filter-->
+<div class="inputFilter">
+    <div class="row g-3">
+    <form action="" method="get">
+        <div class="col">
+        <label for="filterTitle">Filter by Title:</label>
+        {{myFilter.form.name}}
+        </div>
+        <div class="col">
+        <button class="btn btn-primary" type="submit">Search</button>
+        <a class="btn btn-sm btn-danger" href="{% url 'home'%}" >Remove filters</a></td>
+        </div>
+    </form></div>
+</div>
+
+<style>
+    body {
+        background: #C4f4f8;
+    }
+    .inputMovie {
+        background: #efefef;
+        padding: 60px 120px 80px 120px;
+        text-align: center;
+        max-width: 500px;
+        margin-top: 25px;
+        margin: auto;
+    }
+    .col{
+        margin:10px;
+    }
+    .tableclass{
+        max-width: 500px;
+        margin: auto;
+        margin-top: 25px;
+    }
+    .inputFilter{
+        background: #efefef;
+        padding: 0px 120px 80px 120px;
+        text-align: center;
+        max-width: 500px;
+        margin: auto;
+    }
+    tbody{
+        background:#FFDAc1;
+    }
+    h3{
+        text-align: center;
+    }
+</style>
+{% endblock %}

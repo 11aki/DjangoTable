@@ -1,0 +1,28 @@
+{% extends 'login/main.html' %}
+{%block content%}
+
+
+
+<form action="{%url 'deleteMovie' item.id%}" method="post">
+    {%csrf_token%}
+
+<div class="card">
+    <div class="card-header">
+      Warning!
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Are you sure you want to delete "{{item}}"</h5>
+        <input type="submit" href="{% url 'home' %}" value="Confirm" >
+        <a href="{%url 'home'"> Cancel </a>
+    </div>
+  </div>
+
+</form>
+
+
+<style>
+    .card{
+        text-align: center;
+    }
+</style>
+{%endblock%}

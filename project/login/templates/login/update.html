@@ -1,0 +1,49 @@
+{% extends 'login/main.html' %}d
+{% block content %}
+
+<div class="inputMovie">
+<form action="" method="POST">
+    {%csrf_token%}
+    <h3>Update Movie</h3>
+    <input type="hidden" name="user" value="username" maxlength="200" required id="id_user">
+    <div class="row g-3">
+        <div class="col">
+            {{item.name.label}}
+            {{item.name}}
+        </div>
+        <div class="col">
+            {{item.genre.label}}
+            {{item.genre}}
+        </div>
+        <div class="col">
+            <label for="">Release Date (mm/dd/yyyy)</label>
+            {{item.release_date}}
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary" >Update</button>
+</form>
+</div>
+<style>
+    body {
+        background: #C4f4f8;
+    }
+    .inputMovie {
+        background: #efefef;
+        margin: auto;
+        padding: 60px 120px 80px 120px;
+        text-align: center;
+        max-width: 500px;
+        margin-top: 25px;
+    }
+    .col{
+        margin:10px;
+    }
+    tbody{
+        background:#FFDAc1;
+    }
+    h3{
+        text-align: center;
+    }
+</style>
+{%  endblock %}
+
